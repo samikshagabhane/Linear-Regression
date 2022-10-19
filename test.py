@@ -1,8 +1,10 @@
 import pandas as pd
 from sklearn.datasets import load_boston
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import cross_val_score
 from sklearn.metrics import r2_score
+import pickle as pkl
+import os
+
 
 df=load_boston()
 
@@ -29,8 +31,13 @@ X_test=scaler.transform(X_test)
 
 regression=LinearRegression()
 regression.fit(X_train,y_train)
-mse=cross_val_score(regression,X_train,y_train,scoring='neg_mean_squared_error',cv=10)
-##prediction 
+
+
+print("creating pkl file")
+print(os.getcwd())
+pkl.dump(regression,open('./output.pkl','wb'))
+
+
 reg_pred=regression.predict(X_test)
 print("Prediction------>",reg_pred)
 
