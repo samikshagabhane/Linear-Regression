@@ -35,7 +35,7 @@ regression.fit(X_train,y_train)
 
 print("creating pkl file")
 print(os.getcwd())
-pkl.dump(regression,open('./output.pkl','wb'))
+pkl.dump(regression,open('./model.pkl','wb'))
 
 
 reg_pred=regression.predict(X_test)
